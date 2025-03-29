@@ -1,30 +1,20 @@
-# Obrigatorio
+Projeto do conecta seinfra na parte do front end
+
+# Dependecias
 
   - React
 
   - Typescript
 
-## Tailwind
+  - jose( JWT )
 
-  - Facilitacao do css (Responsividade)
+  - Tailwind
 
-## Axios
+  - Axios
 
-  - Facilitacao do uso do fetch(Lida altomaticamente com erros)
+  - Zod
 
-## Zod
+  - React-hook-form
+  - @hookform/resolvers
 
-  - Validadaçao de schema (Login e Cadastro)
-
-## React-hook-form
-
-  - Criaçao de formularios (Facilitacao de Validadaçao, integracao com Zod instalando "@hookform/resolvers" com npm)
-  
-## Tanstack Router
-
-  - Criaçao de rotas 
-  
-## Ainda na Duvida:
-
- -  Tanstack Quey (React Quey)
-
+  - Tanstack Router

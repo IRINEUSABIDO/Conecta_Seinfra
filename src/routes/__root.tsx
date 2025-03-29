@@ -8,9 +8,10 @@ export const Route = createRootRoute({
         <Link to="/" className="[&.active]:font-bold">
           Home
         </Link>{" "}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
+        <Link to="/login" className="[&.active]:font-bold">
+          Login
         </Link>
+        <Link to="/cadastro">Cadastro</Link>
       </div>
       <hr />
       <Outlet />
