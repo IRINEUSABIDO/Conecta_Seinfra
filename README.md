@@ -1,6 +1,6 @@
 Projeto do conecta seinfra na parte do front end
 
-# Dependecias
+# Dependencias
 
   - React
 

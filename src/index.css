@@ -1,7 +1,29 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @theme {
-  --color-midnight: #ff0000;
-  --color-tahiti: #3ab7bf;
-  --color-bermuda: #78dcca;
+  --font-inter: "Inter", sans-serif;
+
+  /*cores da tela de ordens de serviço da prefeitura*/
+
+  --color-red-secondary: #ff6944;
+  --color-blue-secondary: #0ec5ef;
+  --color-yellow-secondary: #f0e137;
+
+  --color-primary: #158a8a;
+
+  --color-red-main: #f85252;
+  --color-yellow-main: #fc9905;
+  --color-green-main: #42cb57;
+
+  --color-dark-gray: #676767;
+  --color-light-gray: #a1a1a1;
+
+  --color-bg-gray: #b4babb;
+  --color-bg-gray-light: #d9d9d9;
+  --color-bg-gray-medium: #a8a8a8;
+
+  --color-font-gray-1: #3a3939;
+  --color-font-gray-2: #605f5f;
+  --color-font-gray-3: #2a2a2a;
 }
