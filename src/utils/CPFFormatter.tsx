@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import identify from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/identify.png";
+import identify from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/User_Card_ID.png";
 
 const corretorCPF = (cpf: string): string => {
   cpf = cpf.replace(/\D/g, "");
@@ -28,7 +28,7 @@ const CPFFormatter: React.FC = () => {
             maxLength={14}
             className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
           />
-          <img src={identify} alt="identify" className="w-[50px]" />
+          <img src={identify} alt="identify" className="w-[30px]" />
         </div>
       </div>
     </>
