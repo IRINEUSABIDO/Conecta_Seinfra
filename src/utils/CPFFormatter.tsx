@@ -26,7 +26,7 @@ const CPFFormatter: React.FC = () => {
             value={cpf}
             onChange={mudanca}
             maxLength={14}
-            className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
+            className="px-9 py-3 text-header-blue font-inter font-semibold outline-0"
           />
           <img src={identify} alt="identify" className="w-[30px]" />
         </div>
