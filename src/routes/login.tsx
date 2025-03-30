@@ -5,12 +5,13 @@ export const Route = createFileRoute("/login")({
 });
 
 import identify from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/identify.png";
+import password_ocult from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/senha.png";
 
 function RouteComponent() {
   return (
     <>
-      <header className="bg-light-gray">
-        <h1 className="text-center font-semibold text-2xl text-header-blue ">
+      <header className="bg-light-gray w-screen">
+        <h1 className="text-center font-bold text-2xl text-header-blue mb-[20px]">
           LOGIN
         </h1>
 
@@ -23,35 +24,40 @@ function RouteComponent() {
 
       <main className="h-screen bg-dark-gray flex items-center justify-center">
         <div className="columns-1">
-          <div className="mr-[70px]">
+          <div className="mr-[70px] ml-[30px]">
             <h1 className="text-5xl font-inter font-light text-whitebor">
               <em>CONECTA</em>
             </h1>
           </div>
 
-          <div className="ml-[100px]">
+          <div className="ml-[130px] mb-[100px]">
             <h1 className="text-5xl font-inter font-light text-whitebor mb-[40px]">
               <em>SEINFRA</em>
             </h1>
           </div>
 
-          <div className="rounded-3xl bg-light-gray border-1 flex items-center space-x-3">
+          <div className="rounded-2xl bg-light-gray flex items-center space-x-3">
             <input
               placeholder="CPF"
               type="text"
-              className="px-8 py-3 text-header-blue font-inter font-semibold"
+              className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
             />
             <img src={identify} alt="identify" className="w-[50px]" />
           </div>
 
           <br />
 
-          <div className="rounded-3xl bg-light-gray">
-              <input
-                placeholder="SENHA"
-                type="passaword"
-                className="px-8 py-3 text-header-blue font-inter font-semibold"
-              />
+          <div className="rounded-2xl bg-light-gray flex items-center space-x-8">
+            <input
+              placeholder="SENHA"
+              type="password"
+              className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
+            />
+            <img
+              src={password_ocult}
+              alt="passwordOcult"
+              className="w-[25px]"
+            />
           </div>
         </div>
       </main>

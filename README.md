@@ -18,3 +18,5 @@ Projeto do conecta seinfra na parte do front end
   - @hookform/resolvers
 
   - Tanstack Router
+
+  - React-Input-Mask
