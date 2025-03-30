@@ -4,6 +4,8 @@ export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
+import identify from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/identify.png";
+
 function RouteComponent() {
   return (
     <>
@@ -33,14 +35,23 @@ function RouteComponent() {
             </h1>
           </div>
 
+          <div className="rounded-3xl bg-light-gray border-1 flex items-center space-x-3">
+            <input
+              placeholder="CPF"
+              type="text"
+              className="px-8 py-3 text-header-blue font-inter font-semibold"
+            />
+            <img src={identify} alt="identify" className="w-[50px]" />
+          </div>
+
+          <br />
+
           <div className="rounded-3xl bg-light-gray">
-            <label className="">
               <input
-                placeholder="CPF"
-                type="text"
+                placeholder="SENHA"
+                type="passaword"
                 className="px-8 py-3 text-header-blue font-inter font-semibold"
               />
-            </label>
           </div>
         </div>
       </main>
