@@ -26,4 +26,18 @@
   --color-font-gray-1: #3a3939;
   --color-font-gray-2: #605f5f;
   --color-font-gray-3: #2a2a2a;
+
+  /*cores da tela dos usuarios mobile*/
+
+  --color-header-blue: #158a8a;
+  --color-header-gray: #daded9;
+
+  --color-header-red: #ff6944;
+  --color-header-light-blue: #0ec5ef;
+  --color-header-yellow: #f0e137;
+
+  --color-dark-gray: #c2c2c2;
+  --color-whitebor: #f8f8f8;
+
+  --color-light-gray: #d9d9d9;
 }
