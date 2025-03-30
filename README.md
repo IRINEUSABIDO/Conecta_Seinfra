@@ -2,21 +2,19 @@ Projeto do conecta seinfra na parte do front end
 
 # Dependencias
 
-  - React
+- React
 
-  - Typescript
+- Typescript
 
-  - jose( JWT )
+- jose( JWT )
 
-  - Tailwind
+- Tailwind
 
-  - Axios
+- Axios
 
-  - Zod
+- Zod
 
-  - React-hook-form
-  - @hookform/resolvers
+- React-hook-form
+- @hookform/resolvers
 
-  - Tanstack Router
-
-  - React-Input-Mask
+- Tanstack Router

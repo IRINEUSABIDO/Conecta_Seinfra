@@ -4,8 +4,8 @@ export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
-import identify from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/identify.png";
 import password_ocult from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/senha.png";
+import CPFFormatter from "../utils/CPFFormatter";
 
 function RouteComponent() {
   return (
@@ -37,12 +37,7 @@ function RouteComponent() {
           </div>
 
           <div className="rounded-2xl bg-light-gray flex items-center space-x-3">
-            <input
-              placeholder="CPF"
-              type="text"
-              className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
-            />
-            <img src={identify} alt="identify" className="w-[50px]" />
+            <CPFFormatter />
           </div>
 
           <br />
