@@ -1,6 +1,6 @@
 import { useState } from "react";
-import password_hide from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/Hide.png";
-import password_show from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/Show.png";
+import password_hide from "../assets/icons/Hide.png";
+import password_show from "../assets/icons/Show.png";
 
 const PasswordPass = () => {
   const [showPassword, setShowPassword] = useState(false);

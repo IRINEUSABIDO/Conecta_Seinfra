@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import identify from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/icons/User_Card_ID.png";
+import identify from "../assets/icons/User_Card_ID.png";
 
 const corretorCPF = (cpf: string): string => {
   cpf = cpf.replace(/\D/g, "");

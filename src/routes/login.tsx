@@ -3,8 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
-import footer from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/footer.png";
-import logoPrefeitura from "/janela da rua/barcelona2015/Conecta_Seinfra/src/assets/logoPrefeitura.png";
+import footer from "../assets/footer.png";
+import logoPrefeitura from "../assets/logoPrefeitura.png";
 import CPFFormatter from "../utils/CPFFormatter";
 import PasswordPass from "../utils/PasswordPass";
 
