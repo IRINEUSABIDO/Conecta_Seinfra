@@ -4,7 +4,7 @@ interface Props {
 
 export function Header(props: Props) {
   return (
-    <header className="bg-light-gray w-screen">
+    <header className="bg-light-gray ">
       <h1 className="text-center font-bold text-2xl text-header-blue pt-[20px]">
         {props.title}
       </h1>

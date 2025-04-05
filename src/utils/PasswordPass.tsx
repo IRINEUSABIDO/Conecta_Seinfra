@@ -11,11 +11,13 @@ const PasswordPass = () => {
 
   return (
     <div className="rounded-2xl bg-light-gray flex items-center space-x-6">
-      <input
-        placeholder="SENHA"
-        type={showPassword ? "text" : "password"}
-        className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
-      />
+      <form>
+        <input
+          placeholder="SENHA"
+          type={showPassword ? "text" : "password"}
+          className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
+        />
+      </form>
       <button type="button" onClick={click} className="outline-none">
         {" "}
         <img

@@ -37,7 +37,7 @@ function RouteComponent() {
             </h1>
           </div>
           <div className="flex items-center justify-center">
-            <button type="button" className=" m-[20px] text-whitebor">
+            <button type="submit" className=" m-[20px] text-whitebor">
               <h1 className="px-5.5 py-1.5 font-inter font-extrabold bg-green-blue rounded-2xl">
                 ENTRAR
               </h1>

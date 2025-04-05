@@ -20,14 +20,16 @@ const CPFFormatter: React.FC = () => {
     <>
       <div>
         <div className="rounded-2xl bg-light-gray flex items-center space-x-3">
-          <input
-            type="text"
-            placeholder="CPF"
-            value={cpf}
-            onChange={mudanca}
-            maxLength={14}
-            className="px-9 py-3 text-header-blue font-inter font-semibold outline-0"
-          />
+          <form>
+            <input
+              type="text"
+              placeholder="CPF"
+              value={cpf}
+              onChange={mudanca}
+              maxLength={14}
+              className="px-9 py-3 text-header-blue font-inter font-semibold outline-0"
+            />
+          </form>
           <img src={identify} alt="identify" className="w-[30px]" />
         </div>
       </div>
