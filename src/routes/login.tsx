@@ -1,41 +1,24 @@
+import { Footer } from "../components/footer";
+import { Header } from "../components/header";
+import { Title } from "../components/title";
+
+import CPFFormatter from "../utils/CPFFormatter";
+import PasswordPass from "../utils/PasswordPass";
+
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
-import footer from "../assets/footer.png";
-import logoPrefeitura from "../assets/logoPrefeitura.png";
-import CPFFormatter from "../utils/CPFFormatter";
-import PasswordPass from "../utils/PasswordPass";
 
 function RouteComponent() {
   return (
     <>
-      <header className="bg-light-gray w-screen">
-        <h1 className="text-center font-bold text-2xl text-header-blue mb-[20px]">
-          LOGIN
-        </h1>
-
-        <div className="flex">
-          <div className="bg-header-red h-[15px] grow"></div>
-          <div className="bg-header-light-blue h-[15px] grow"></div>
-          <div className="bg-header-yellow h-[15px] grow"></div>
-        </div>
-      </header>
+      <Header title="LOGIN" />
 
       <main className="h-screen bg-dark-gray flex items-center justify-center">
         <div className="columns-1">
-          <div className="mr-[70px] ml-[30px]">
-            <h1 className="text-5xl font-inter font-light text-whitebor">
-              <em>CONECTA</em>
-            </h1>
-          </div>
-
-          <div className="ml-[130px] mb-[100px]">
-            <h1 className="text-5xl font-inter font-light text-whitebor mb-[40px]">
-              <em>SEINFRA</em>
-            </h1>
-          </div>
+          <Title />
 
           <CPFFormatter />
 
@@ -63,21 +46,7 @@ function RouteComponent() {
         </div>
       </main>
 
-      <footer>
-        <div className="flex">
-          <div className="bg-header-red h-[15px] grow"></div>
-          <div className="bg-header-light-blue h-[15px] grow"></div>
-          <div className="bg-header-yellow h-[15px] grow"></div>
-        </div>
-
-        <div className="flex items-center justify-center bg-light-gray ">
-          <img src={logoPrefeitura} alt="logo da prefeitura" />
-        </div>
-
-        <div className="flex items-center justify-center">
-          <img src={footer} alt="footer do site" className="" />
-        </div>
-      </footer>
+      <Footer hasLogo={true} />
     </>
   );
 }
