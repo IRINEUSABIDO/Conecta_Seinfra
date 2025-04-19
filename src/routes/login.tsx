@@ -2,16 +2,54 @@ import { Footer } from "../components/footer";
 import { Header } from "../components/header";
 import { Title } from "../components/title";
 
-import CPFFormatter from "../utils/CPFFormatter";
-import PasswordPass from "../utils/PasswordPass";
+import type { userLogin } from "../utils/zodSchemas.ts";
+import { userLoginSchema } from "../utils/zodSchemas.ts";
+import { corretorCPF } from "../utils/CPFFormatter.tsx";
+
+import identify from "../assets/icons/User_Card_ID.png";
+import password_hide from "../assets/icons/Hide.png";
+import password_show from "../assets/icons/Show.png";
 
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const [cpf, setCpf] = useState<string>("");
+
+  const mudanca = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCpf(corretorCPF(e.target.value));
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const click = () => {
+    setShowPassword((alternar) => !alternar);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<userLogin>({ resolver: zodResolver(userLoginSchema) });
+
+  async function onSubmit(data: userLogin) {
+    console.log("deu certo");
+    console.log(data);
+
+    // const res = await fetch("/login", {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    // });
+    // const resData = await res.json();
+    // console.log(resData);
+  }
+
   return (
     <>
       <Header title="LOGIN" />
@@ -20,29 +58,67 @@ function RouteComponent() {
         <div className="columns-1">
           <Title />
 
-          <CPFFormatter />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* form do cpf  */}
+            <div>
+              <div className="rounded-2xl bg-light-gray flex items-center space-x-3">
+                <input
+                  {...register("cpf")}
+                  type="text"
+                  placeholder="CPF"
+                  value={cpf}
+                  onChange={mudanca}
+                  maxLength={14}
+                  className="px-9 py-3 text-header-blue font-inter font-semibold outline-0"
+                />
+                <img src={identify} alt="identify" className="w-[30px]" />
+              </div>
+            </div>
 
-          <br />
+            <br />
 
-          <PasswordPass />
-          <div className="text-header-blue font-inter font-semibold text-[15px] mt-[10px] mb-[25px]">
-            <h1>
-              NOVO NO CONECTA SEINFRA?{" "}
-              <a
-                className="hover:text-blue-800 underline"
-                href="https://www.youtube.com/watch?v=HrD4DoP7ArY&t=31s"
-              >
-                CADASTRE-SE
-              </a>
-            </h1>
-          </div>
-          <div className="flex items-center justify-center">
-            <button type="submit" className=" m-[20px] text-whitebor">
-              <h1 className="px-5.5 py-1.5 font-inter font-extrabold bg-green-blue rounded-2xl">
-                ENTRAR
+            {/* form da senha  */}
+            <div className="rounded-2xl bg-light-gray flex items-center space-x-6">
+              <input
+                {...register("senha")}
+                placeholder="SENHA"
+                type={showPassword ? "text" : "password"}
+                className="px-8 py-3 text-header-blue font-inter font-semibold outline-0"
+              />
+              <button type="button" onClick={click} className="outline-none">
+                {" "}
+                <img
+                  src={showPassword ? password_show : password_hide}
+                  alt="Altenar imagens quando quiser mostrar ou nao sua senha"
+                  className="w-[25px] m-[2px] cursor-pointer"
+                />
+              </button>
+            </div>
+            {/* botao do cadastro */}
+            <div className="text-header-blue font-inter font-semibold text-[15px] mt-[10px] mb-[25px]">
+              <h1>
+                NOVO NO CONECTA SEINFRA?{" "}
+                <a
+                  className="hover:text-blue-800 underline"
+                  href="https://www.youtube.com/watch?v=HrD4DoP7ArY&t=31s"
+                >
+                  CADASTRE-SE
+                </a>
               </h1>
-            </button>
-          </div>
+            </div>
+            {/* botao do submit */}
+            <div className="flex items-center justify-center">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className=" m-[20px] text-whitebor  bg-green-blue rounded-2xl disabled:bg-red-700 "
+              >
+                <h1 className="px-5.5 py-1.5 font-inter font-extrabold ">
+                  ENTRAR
+                </h1>
+              </button>
+            </div>
+          </form>
         </div>
       </main>
 

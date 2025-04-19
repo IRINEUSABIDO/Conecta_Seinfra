@@ -12,6 +12,7 @@ export const Route = createRootRoute({
           Login
         </Link>
         <Link to="/cadastro">Cadastro</Link>
+         <Link to="/registrarOrdem">RegistrarOrdem</Link>
       </div>
       <hr />
       <Outlet />

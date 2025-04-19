@@ -8,6 +8,8 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
@@ -15,7 +17,19 @@ import { Route as LoginImport } from './routes/login'
 import { Route as CadastroImport } from './routes/cadastro'
 import { Route as IndexImport } from './routes/index'
 
+// Create Virtual Routes
+
+const RegistrarOrdemLazyImport = createFileRoute('/registrarOrdem')()
+
 // Create/Update Routes
+
+const RegistrarOrdemLazyRoute = RegistrarOrdemLazyImport.update({
+  id: '/registrarOrdem',
+  path: '/registrarOrdem',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/registrarOrdem.lazy').then((d) => d.Route),
+)
 
 const LoginRoute = LoginImport.update({
   id: '/login',
@@ -60,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
+    '/registrarOrdem': {
+      id: '/registrarOrdem'
+      path: '/registrarOrdem'
+      fullPath: '/registrarOrdem'
+      preLoaderRoute: typeof RegistrarOrdemLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -69,12 +90,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cadastro': typeof CadastroRoute
   '/login': typeof LoginRoute
+  '/registrarOrdem': typeof RegistrarOrdemLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cadastro': typeof CadastroRoute
   '/login': typeof LoginRoute
+  '/registrarOrdem': typeof RegistrarOrdemLazyRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +105,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cadastro': typeof CadastroRoute
   '/login': typeof LoginRoute
+  '/registrarOrdem': typeof RegistrarOrdemLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cadastro' | '/login'
+  fullPaths: '/' | '/cadastro' | '/login' | '/registrarOrdem'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cadastro' | '/login'
-  id: '__root__' | '/' | '/cadastro' | '/login'
+  to: '/' | '/cadastro' | '/login' | '/registrarOrdem'
+  id: '__root__' | '/' | '/cadastro' | '/login' | '/registrarOrdem'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +121,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CadastroRoute: typeof CadastroRoute
   LoginRoute: typeof LoginRoute
+  RegistrarOrdemLazyRoute: typeof RegistrarOrdemLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CadastroRoute: CadastroRoute,
   LoginRoute: LoginRoute,
+  RegistrarOrdemLazyRoute: RegistrarOrdemLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -117,7 +143,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/cadastro",
-        "/login"
+        "/login",
+        "/registrarOrdem"
       ]
     },
     "/": {
@@ -128,6 +155,9 @@ export const routeTree = rootRoute
     },
     "/login": {
       "filePath": "login.tsx"
+    },
+    "/registrarOrdem": {
+      "filePath": "registrarOrdem.lazy.tsx"
     }
   }
 }
