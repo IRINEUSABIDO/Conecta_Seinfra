@@ -14,6 +14,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "../services/api/api.ts";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
@@ -39,15 +40,22 @@ function RouteComponent() {
   } = useForm<userLogin>({ resolver: zodResolver(userLoginSchema) });
 
   async function onSubmit(data: userLogin) {
-    console.log("deu certo");
     console.log(data);
 
-    // const res = await fetch("/login", {
-    //   method: "POST",
-    //   body: JSON.stringify(data),
+    const response = await api.post("/login", data, {
+      headers: {
+        "Content-Type": "multipart/form-data", // necessario para ser enviado corretamente sendo um form, da erro 415
+      },
+    });
+    console.log(response);
+
+    // const response = await api.post("/login", data).then((res) => {
+    //   console.log("aeeeeeeee", res)
+    // }).catch((err) => {
+    //   console.log("a vida e triste e injusta", err)
     // });
-    // const resData = await res.json();
-    // console.log(resData);
+    // console.log(response);
+    // erro 404
   }
 
   return (
