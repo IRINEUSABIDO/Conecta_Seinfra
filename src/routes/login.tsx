@@ -1,9 +1,10 @@
-import { Footer } from "../components/footer";
-import { Header } from "../components/header";
-import { Title } from "../components/title";
+import { Footer } from "../components/footer.tsx";
+import { Header } from "../components/header.tsx";
+import { Title } from "../components/title.tsx";
 
-import type { userLogin } from "../utils/zodSchemas.ts";
-import { userLoginSchema } from "../utils/zodSchemas.ts";
+import type { userLogin } from "../services/zodSchemas.ts";
+import { userLoginSchema } from "../services/zodSchemas.ts";
+import loginAuth from "../services/loginAuth.ts";
 import { corretorCPF } from "../utils/CPFFormatter.tsx";
 
 import identify from "../assets/icons/User_Card_ID.png";
@@ -14,7 +15,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "../services/api/api.ts";
 
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
@@ -22,12 +22,11 @@ export const Route = createFileRoute("/login")({
 
 function RouteComponent() {
   const [cpf, setCpf] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const mudanca = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCpf(corretorCPF(e.target.value));
   };
-
-  const [showPassword, setShowPassword] = useState(false);
 
   const click = () => {
     setShowPassword((alternar) => !alternar);
@@ -36,26 +35,15 @@ function RouteComponent() {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<userLogin>({ resolver: zodResolver(userLoginSchema) });
 
   async function onSubmit(data: userLogin) {
-    console.log(data);
+    console.log(data, typeof data.cpf, typeof data.senha);
 
-    const response = await api.post("/login", data, {
-      headers: {
-        "Content-Type": "multipart/form-data", // necessario para ser enviado corretamente sendo um form, da erro 415
-      },
-    });
-    console.log(response);
-
-    // const response = await api.post("/login", data).then((res) => {
-    //   console.log("aeeeeeeee", res)
-    // }).catch((err) => {
-    //   console.log("a vida e triste e injusta", err)
-    // });
-    // console.log(response);
-    // erro 404
+    // const response = await api.post("/login",data);;
+    loginAuth(data)
+  
   }
 
   return (
@@ -81,6 +69,14 @@ function RouteComponent() {
                 />
                 <img src={identify} alt="identify" className="w-[30px]" />
               </div>
+              {errors.cpf && (
+                <p
+                  className="text-red-main
+              font-inter font-semibold outline-0"
+                >
+                  {errors.cpf.message}
+                </p>
+              )}
             </div>
 
             <br />
@@ -102,6 +98,14 @@ function RouteComponent() {
                 />
               </button>
             </div>
+            {errors.senha && (
+              <p
+                className="text-red-main
+              font-inter font-semibold outline-0"
+              >
+                {errors.senha.message}
+              </p>
+            )}
             {/* botao do cadastro */}
             <div className="text-header-blue font-inter font-semibold text-[15px] mt-[10px] mb-[25px]">
               <h1>
