@@ -9,7 +9,7 @@ import { Title } from "../components/title";
 import Logo from "../assets/logoPrefeitura.png";
 import Tres_Pontos from "../assets/icons/tres_pontos.png";
 import adicionar_icon from "../assets/icons/+.png";
-import teclado_icon from "../assets/icons/teclado.png"
+import teclado_icon from "../assets/icons/teclado.png";
 
 function RouteComponent() {
   return (
@@ -40,10 +40,10 @@ function RouteComponent() {
               >
                 <h1>Registrar um Ordem</h1>
               </button>
-              <img 
-              src={adicionar_icon}
-              alt="Opção Index +"
-              className="w-[10px]"
+              <img
+                src={adicionar_icon}
+                alt="Opção Index +"
+                className="w-[10px]"
               />
             </div>
 
@@ -57,10 +57,10 @@ function RouteComponent() {
               >
                 <h1>Minhas Solicitações</h1>
               </button>
-              <img 
-              src={adicionar_icon}
-              alt="Opção Index +"
-              className="w-[10px]"
+              <img
+                src={adicionar_icon}
+                alt="Opção Index +"
+                className="w-[10px]"
               />
             </div>
 
@@ -74,10 +74,10 @@ function RouteComponent() {
               >
                 <h1>Mensagem Direta</h1>
               </button>
-              <img 
-              src={teclado_icon}
-              alt="Opção Index teclado"
-              className="w-[25px]"
+              <img
+                src={teclado_icon}
+                alt="Opção Index teclado"
+                className="w-[25px]"
               />
             </div>
           </div>

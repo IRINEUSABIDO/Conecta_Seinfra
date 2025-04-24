@@ -42,8 +42,7 @@ function RouteComponent() {
     console.log(data, typeof data.cpf, typeof data.senha);
 
     // const response = await api.post("/login",data);;
-    loginAuth(data)
-  
+    loginAuth(data);
   }
 
   return (
