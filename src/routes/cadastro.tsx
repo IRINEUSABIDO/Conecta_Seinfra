@@ -6,10 +6,11 @@ import { Button_Input } from "../components/button";
 import pessoa from "../assets/icons/pessoa.png";
 import telefone from "../assets/icons/telefone.png";
 import credencias from "../assets/icons/credenciais.png";
-import hide_gray from "../assets/icons/Hide_gray.png";
-import show_gray from "../assets/icons/Show_gray.png";
+
 import teclado from "../assets/icons/teclado.png";
 import { Footer } from "../components/footer";
+import { Button_cpf } from "../components/buttonCPF";
+import { Button_password } from "../components/buttonPassword";
 
 export const Route = createFileRoute("/cadastro")({
   component: RouteComponent,
@@ -22,6 +23,7 @@ function RouteComponent() {
       <div className="flex justify-center items-center bg-dark-gray text-light-gray h-screen">
         <div className="columns-1">
           <Title />
+
           <main>
             <form>
               <Button_Input title="Nome" src={pessoa} />
@@ -31,13 +33,13 @@ function RouteComponent() {
               <Button_Input title="Telefone" src={telefone} />
               <br />
 
-              <Button_Input title="CPF" src={credencias} />
+              <Button_cpf title="CPF" src={credencias} />
               <br />
 
-              <Button_Input title="Senha" src={hide_gray} />
+              <Button_password title="Senha" hasPassword={true} src="" />
               <br />
 
-              <Button_Input title="Confirmação da Senha" src={teclado} />
+              <Button_password title="Confirmação da Senha" hasPassword={false} src={teclado}/>
             </form>
 
             <div className="flex items-center justify-center">
