@@ -60,7 +60,7 @@ function RouteComponent() {
                 <input
                   {...register("cpf")}
                   type="text"
-                  placeholder="CP"
+                  placeholder="CPF"
                   value={cpf}
                   onChange={mudanca}
                   maxLength={14}
