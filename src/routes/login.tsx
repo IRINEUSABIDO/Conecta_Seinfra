@@ -7,9 +7,9 @@ import { userLoginSchema } from "../services/zodSchemas.ts";
 import loginAuth from "../services/loginAuth.ts";
 import { corretorCPF } from "../utils/CPFFormatter.tsx";
 
-import identify from "../assets/icons/User_Card_ID.png";
-import password_hide from "../assets/icons/Hide.png";
-import password_show from "../assets/icons/Show.png";
+import identify from "../assets/icons/credenciais.png"; 
+import password_hide from "../assets/icons/Hide_gray.png";
+import password_show from "../assets/icons/Show_gray.png";
 
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
@@ -60,7 +60,7 @@ function RouteComponent() {
                 <input
                   {...register("cpf")}
                   type="text"
-                  placeholder="CP"
+                  placeholder="CPF"
                   value={cpf}
                   onChange={mudanca}
                   maxLength={14}

@@ -19,7 +19,7 @@ export const Button_cpf = (props: Props) => {
           value={cpf}
           onChange={mudanca}
           maxLength={14}
-          className="px-12 py-4 text-header-blue font-inter font-bold cursor-pointer outline-0 "
+          className="px-10 py-4 text-header-blue font-inter font-bold cursor-pointer outline-0 "
         />
         <img src={props.src} alt="identify" className="mr-4" />
       </div>

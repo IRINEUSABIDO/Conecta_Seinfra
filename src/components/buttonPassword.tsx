@@ -19,7 +19,7 @@ export const Button_password = (props: Props) => {
         <input
           placeholder={props.title}
           type={showPassword ? "text" : "password"}
-          className="px-12 py-4 text-header-blue font-inter font-semibold outline-0"
+          className="px-10 py-4 text-header-blue font-inter font-semibold outline-0"
         />
         <button type="button" onClick={click} className="outline-none">
           {" "}
@@ -35,7 +35,7 @@ export const Button_password = (props: Props) => {
             <input 
             placeholder={props.title}
             type="password"
-            className="px-12 py-4 text-header-blue font-inter font-semibold outline-0"
+            className="px-10 py-4 text-header-blue font-inter font-semibold outline-0"
             />
             <img src={props.src} alt="confirmação da senha" className="mr-4"/>
         </div>
