@@ -1,13 +1,13 @@
-import axios from "./api/axios";
+import { login } from "./api/axios";
 import { userLogin } from "./zodSchemas";
 
-const loginAuth = async (data: userLogin) => {
-  const response = await axios
+export const loginAuth = async (data: userLogin) => {
+  await login
     .post("/login", data, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
     })
-    .then((res) => {
-      console.log("aeeeeeeee", res);
+    .then((response) => {
+      console.log("aeeeeeeee", response.data);
     })
     .catch((err) => {
       console.log("a vida e triste e injusta", err);
@@ -18,7 +18,5 @@ const loginAuth = async (data: userLogin) => {
         alert("Sem autorizaçao");
       }
     });
-  console.log(response);
 };
-
-export default loginAuth;
+;

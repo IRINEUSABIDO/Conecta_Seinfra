@@ -4,10 +4,10 @@ import { Title } from "../components/title.tsx";
 
 import type { userLogin } from "../services/zodSchemas.ts";
 import { userLoginSchema } from "../services/zodSchemas.ts";
-import loginAuth from "../services/loginAuth.ts";
+import { loginAuth } from "../services/authRequest.ts";
 import { corretorCPF } from "../utils/CPFFormatter.tsx";
 
-import identify from "../assets/icons/credenciais.png"; 
+import identify from "../assets/icons/credenciais.png";
 import password_hide from "../assets/icons/Hide_gray.png";
 import password_show from "../assets/icons/Show_gray.png";
 
@@ -39,9 +39,6 @@ function RouteComponent() {
   } = useForm<userLogin>({ resolver: zodResolver(userLoginSchema) });
 
   async function onSubmit(data: userLogin) {
-    console.log(data, typeof data.cpf, typeof data.senha);
-
-    // const response = await api.post("/login",data);;
     loginAuth(data);
   }
 
@@ -124,7 +121,7 @@ function RouteComponent() {
                 disabled={isSubmitting}
                 className=" m-[20px] text-whitebor  bg-green-blue rounded-2xl disabled:bg-red-700 "
               >
-                <h1 className="px-5.5 py-1.5 font-inter font-extrabold ">
+                <h1 className="px-5.5 py-1.5 font-inter font-extrabold hover:cursor-crosshair">
                   ENTRAR
                 </h1>
               </button>

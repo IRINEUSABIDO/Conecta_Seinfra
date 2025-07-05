@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export default axios.create({
-    baseURL:"http://localhost:3000"
+axios.defaults.baseURL = "http://localhost:3000";
+
+export const login = axios.create({
+    withCredentials: true,
 }
 )
