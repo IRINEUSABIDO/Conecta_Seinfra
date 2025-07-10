@@ -23,7 +23,7 @@ export const Dropdown_Select = (props: Props) => {
   };
 
   return (
-    <div className="rounded-2xl bg-light-gray flex flex-col items-center justify-center p-4 pr-2 mr- w-[365px]">
+    <div className="relative z-10 rounded-2xl bg-light-gray flex flex-col items-center justify-center p-4 pr-2 mr- w-[365px]">
       <div className="w-full flex justify-between items-center font-inter font-bold text-header-blue">
         <h1 className="text-header-blue">{props.title}</h1>
         <button
@@ -41,7 +41,7 @@ export const Dropdown_Select = (props: Props) => {
 
       {/* Quando o usuário clicar no chevron, vai chamar esse bloco que contém as opções  */}
       {isOpen && (
-        <div className="mt-4 w-full flex flex-col items-center space-y-2 ">
+        <div className="absolute top-full z-50 mt-2 w-full flex flex-col items-center space-y-2">
           {[
             props.opcao1,
             props.opcao2,
