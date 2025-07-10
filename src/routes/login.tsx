@@ -4,8 +4,8 @@ import { Title } from "../components/title.tsx";
 
 import type { userLogin } from "../services/zodSchemas.ts";
 import { userLoginSchema } from "../services/zodSchemas.ts";
-import { loginAuth } from "../services/authRequest.ts";
 import { corretorCPF } from "../utils/CPFFormatter.tsx";
+import { login } from "../services/api/axios.ts";
 
 import identify from "../assets/icons/credenciais.png";
 import password_hide from "../assets/icons/Hide_gray.png";
@@ -31,6 +31,7 @@ function RouteComponent() {
   const click = () => {
     setShowPassword((alternar) => !alternar);
   };
+  const [postError, setpostError] = useState(false);
 
   const {
     register,
@@ -39,7 +40,14 @@ function RouteComponent() {
   } = useForm<userLogin>({ resolver: zodResolver(userLoginSchema) });
 
   async function onSubmit(data: userLogin) {
-    loginAuth(data);
+    try {
+      const response = await login.post("/login", data, {
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+      });
+      console.log(response);
+    } catch (error) {
+      setpostError(true);
+    }
   }
 
   return (
@@ -115,7 +123,7 @@ function RouteComponent() {
               </h1>
             </div>
             {/* botao do submit */}
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -125,6 +133,16 @@ function RouteComponent() {
                   ENTRAR
                 </h1>
               </button>
+              {/* mensagem de erro caso de ruim no login */}
+              {postError && (
+                <p
+                  className="text-red-main
+              font-inter font-semibold outline-0"
+                >
+                  {" "}
+                  Erro, porfavor tente novamente
+                </p>
+              )}
             </div>
           </form>
         </div>
