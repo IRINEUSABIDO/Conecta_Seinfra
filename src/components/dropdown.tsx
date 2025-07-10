@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import chevron_up from "../assets/icons/Chevron_Up.png";
 import chevron_down from "../assets/icons/Chevron_Down.png";
+import { Dropdown_Select_Button } from "./dropdownButton";
 
 interface Props {
   title: string;
@@ -10,17 +11,19 @@ interface Props {
   opcao3: string;
   opcao4: string;
   opcao5: string;
+  
 }
 
 export const Dropdown_Select = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [indexSelecionado , setIndexSelecionado] = useState<number | null>(null);
 
   const click = () => {
     setIsOpen((prev) => !prev);
   };
 
   return (
-    <div className="rounded-2xl bg-light-gray flex flex-col items-center justify-center p-4 w-[340px]">
+    <div className="rounded-2xl bg-light-gray flex flex-col items-center justify-center p-4 pr-2 mr- w-[365px]">
       <div className="w-full flex justify-between items-center font-inter font-bold text-header-blue">
         <h1 className="text-header-blue">{props.title}</h1>
         <button
@@ -46,13 +49,16 @@ export const Dropdown_Select = (props: Props) => {
             props.opcao4,
             props.opcao5,
           ].map((opcao, index) => (
-            <button
+            <div
               key={index}
-              type="button"
-              className="w-full bg-white text-header-blue font-bold text-[18px] py-3 rounded-xl shadow-xl shadow-gray-400 cursor-pointer"
+              className="w-full flex items-center justify-between bg-white py-3 px-4 rounded-xl shadow-xl shadow-gray-400 cursor-pointer text-header-blue font-bold"
+              onClick={() => setIndexSelecionado(index)}
             >
-              {opcao}
-            </button>
+              <span className="">
+                {opcao}
+              </span>
+              <Dropdown_Select_Button selected={indexSelecionado === index} />
+            </div>
           ))}
         </div>
       )}
